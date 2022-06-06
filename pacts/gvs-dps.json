@@ -1,0 +1,42 @@
+{
+  "consumer": {
+    "name": "GVS"
+  },
+  "provider": {
+    "name": "DPS"
+  },
+  "interactions": [
+    {
+      "description": "A post request for DPS",
+      "providerState": "DPS Response for Singapore country",
+      "request": {
+        "method": "POST",
+        "path": "/api/v2/fees/FP_SG",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "customer": {
+            "variant": "Original"
+          }
+        },
+        "matchingRules": {
+          "$.body.customer.variant": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
